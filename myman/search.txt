@@ -1,0 +1,13 @@
+■検索
+  前：C-s
+  後： C-r
+　（正規表現置換）
+  　前：C-M-s
+  　後：C-M-r
+
+■置換
+  M-%   ：対話的置換
+  M-C-% ：正規表現対話的置換
+  M-x replace-string ：一括置換
+  M-x replace-regexp ：正規表現一括置換
+ 

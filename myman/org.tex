@@ -1,0 +1,77 @@
+% Created 2013-07-07 日 03:27
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{org}
+\author{}
+\date{\today}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs Org-mode version 7.8.11}}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+\vspace*{1cm}
+\section{org-modeについて}
+\label{sec-1}
+\subsection{モードの変更}
+\label{sec-1-1}
+
+(org-mode)
+\subsection{表現について}
+\label{sec-1-2}
+
+\begin{itemize}
+\item 順序なしリストは - + で扱う
+\item 順序ありリストは，数字の後ろに.か)
+\item 補正するときはC-c C-c
+\item 表は|とTAB
+\begin{itemize}
+\item 行頭を|で始める
+\item 最初の行を書いたらTAB
+\item 以降一つセルを書くごとにTAB
+\item 枠線を引くときは |- TAB
+\item 表計算をするときには C-c \} をすると番号がわかる
+\end{itemize}
+\item 翻訳後にそのまま残したい文章
+\begin{itemize}
+\item 一行ならば : で始める
+\item 複数行は \#+BEGIN$_{\mathrm{EXAMPLE}}$   \#-END$_{\mathrm{EXAMPLE}}$
+\end{itemize}
+\item[/], [], の後にC-c C-c でチェックリスト
+\item 別なファイルを読み込むときは\#+INCLUDE: ファイル名 src メジャーモード
+\item C-c C-e でHTML, \LaTeX{}出力
+\end{itemize}
+
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+ a  &  b     &  c    \\
+ f  &  adfa  &  adf  \\
+\hline
+ f  &        &       \\
+\end{tabular}
+\end{center}
+
+\end{document}

@@ -1,0 +1,7 @@
+;; とりあえず変数定義
+(setq ttt "value") ; 変数定義
+;; リストの中の変数を評価する方法
+(eval ; (eval ttt)
+ (car ; (car (ttt))
+  (last '(a b c ttt)) ;; (ttt)を返す
+  ))

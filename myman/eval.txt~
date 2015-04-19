@@ -1,0 +1,7 @@
+C-x C-e : 最後のS式を評価
+C-j 	: 最後のS式を評価し、結果をバッファに返す
+M-x eval-buffer RET : カレントバッファを全て評価
+M-x eval-region RET : リージョン選択範囲を評価
+
+
+    

@@ -1,0 +1,6 @@
+■キーバインド一覧を表示
+M-x describe-bindings
+
+■特定のキーのバインド
+M-x describe-key
+と打った後，知りたいキーをタイプ

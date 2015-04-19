@@ -1,0 +1,118 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 雑多な設定
+;; おまじない
+(require 'cl)
+;; Emacsからの質問をy/nで回答する
+(fset 'yes-or-no-p 'y-or-n-p)
+;; スタートアップメッセージを非表示
+(setq inhibit-startup-screen t)
+;; .emacs.dから始める
+(cd "~/Dropbox/")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; CUAモードにするが、キーバインドは変えない（矩形編集のため）
+;; 矩形モードはC-SPC C-RET でスタート
+(cua-mode t) ; cua-modeをオン
+(setq cua-enable-cua-keys nil) ; CUAキーバインドは無効
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ロードパスの設定
+;; ロードパスにelispを追加する
+(setq load-path
+      (append
+       (list (expand-file-name "~/Dropbox/.emacs.d/elisp")) load-path))
+;; ロードパスにelpaを追加する
+(setq load-path
+      (append
+       (list (expand-file-name "~/Dropbox/.emacs.d/elpa")) load-path))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; 導入済みツールに関する設定のロード
+
+;; anything
+(require 'anything-config)
+
+;; auto-complete
+(require 'auto-complete)
+(require 'auto-complete-config)
+(global-auto-complete-mode t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 個人的な設定のロード
+;; 自分で設定したキーマップを読み込む
+(load "myKeyMap")
+;; 自分で設定した画面の設定を読み込む
+(load "myFrame")
+;; 自分で設定したバックアップに関する設定を読み込む
+(load "myBackup")
+;; 自分で設定したモードに関する設定を読み込む
+(load "myMode")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; rubymode
+(autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
+(setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
+(setq interpreter-mode-alist (append '(("ruby" . ruby-mode)) interpreter-mode-alist))
+(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
+(add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
+
+;; rubydb
+(autoload 'ruby "rubydb2x"
+  "run rubydb on program file in buffer *gud-file*.
+the directory containing file becomes the initial working directory
+and source-file directory for your debugger." t)
+
+;; ruby-electric.el --- electric editing commands for ruby files
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(let ((rel (assq 'ruby-electric-mode minor-mode-map-alist)))
+  (setq minor-mode-map-alist (append (delete rel minor-mode-map-alist) (list rel))))
+(setq ruby-electric-expand-delimiters-list nil)
+
+(setq ruby-indent-level 2)
+(setq ruby-indent-tabs-mode nil)
+;;
+
+;;
+;; (require 'ruby-block)
+;; (defun ruby-mode-hook-ruby-block()
+;;   (ruby-block-mode t))
+;; (add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
+;; (setq ruby-block-highlight-toggle t)
+
+;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; compileを簡単にする
+(require 'smart-compile)
+;; キーボードに割り当て
+(define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
+(define-key ruby-mode-map (kbd "C-c C-c") (kbd "C-c c C-m"))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+
+
+;;; 以下、自動で設定されたもの
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

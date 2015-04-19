@@ -1,0 +1,4 @@
+C-x RET f と入力後，所望のコードを示す文字列を入力
+euc-jp sjis junet
+euc-jp-unix sjis-dos etc...
+
