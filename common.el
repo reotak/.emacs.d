@@ -6,8 +6,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; スタートアップメッセージを非表示
 (setq inhibit-startup-screen t)
-;; .emacs.dから始める
-(cd "~/Dropbox/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -34,13 +32,21 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 導入済みツールに関する設定のロード
 
-;; anything
-(require 'anything-config)
 
 ;; auto-complete
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+
+
+;; anythingに関する設定
+(load "myAnything")
+;; anything-c-moccurに関する設定
+(load "myAnything-c-moccur")
+;; color-moccur
+(load "myColor-moccur")
+;; moccur-edit
+(load "myMoccur-edit")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 個人的な設定のロード
@@ -54,7 +60,6 @@
 (load "myMode")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
 ;; rubymode
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files" t)
 (setq auto-mode-alist (cons '("\\.rb$" . ruby-mode) auto-mode-alist))
@@ -87,18 +92,39 @@ and source-file directory for your debugger." t)
 ;; (add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
 ;; (setq ruby-block-highlight-toggle t)
 
-;;
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; compileを簡単にする
 (require 'smart-compile)
 ;; キーボードに割り当て
 (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
-(define-key ruby-mode-map (kbd "C-c C-c") (kbd "C-c c C-m"))
+(define-key ruby-mode-map (kbd "C-c C-c") 'smart-compile)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; シェルのパス設定を受け取る
+(require 'exec-path-from-shell)
 
+(let ((envs `("PATH" "GOPATH")))
+  (exec-path-from-shell-copy-envs envs))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; go-modeを有効にする
+(require 'go-mode)
+;;(require 'go-mode-load)
+
+;; goの設定
+(setq gofmt-command "goimports")
+(add-hook 'before-save-hook 'gofmt-before-save)
+(add-hook 'go-mode-hook '(lambda () (setq tab-width 2)))
+;; godef
+(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-.") 'godef-jump)))
+(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-.") 'godef-jump)))
+(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-,") 'pop-tag-mark)))
+(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-,") 'pop-tag-mark)))
+
+;; gocode
+(require 'go-autocomplete)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 
