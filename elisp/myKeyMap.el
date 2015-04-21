@@ -22,6 +22,9 @@
 ;; M-+にフォントの拡大を設定する
 (define-key global-map (kbd "M-+") 'text-scale-adjust)
 
+;; C-i,C-M-_にindent-regionを割り当てる
+(define-key global-map (kbd "C-i") 'indent-region)
+(define-key global-map (kbd "C-M-_") 'indent-region)
 
 
 ;;;; ツールの起動系  ;;;;;
@@ -43,7 +46,7 @@
 
 (define-key global-map (kbd "C-;") 'anything)
 
-;; M-oにoccur-by-moccurを割り当て
+;; M-o oにoccur-by-moccurを割り当て
 (define-key global-map (kbd "M-o") 'occur-by-moccur)
 
 ;;;;; ここまでツールの起動系 ;;;;;
