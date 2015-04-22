@@ -1,11 +1,5 @@
 ;フォント設定
 (set-frame-font "ricty-12")
-; (set-default-font "Inconsolata-11")
-; (set-face-font 'variable-pitch "Inconsolata-11")
-; (set-fontset-font (frame-parameter nil 'font)
-;                  'japanese-jisx0208
-;                  '("Takaoゴシック" . "unicode-bmp")
-; )
 
 ;C-h で一文字削除
 (global-set-key "\C-h" 'delete-backward-char)
@@ -32,8 +26,8 @@
 (global-set-key (kbd "C-j") 'toggle-input-method)
 
 ;; orgモードでC-jが変わらないようにする
-(define-key org-mode-map (kbd "C-j") 'toggle-input-method)
-(define-key lisp-interaction-mode-map (kbd "C-j") 'toggle-input-method)
+;(define-key org-mode-map (kbd "C-j") 'toggle-input-method)
+;(define-key lisp-interaction-mode-map (kbd "C-j") 'toggle-input-method)
 
 ;; diredでもC-tで別バッファに移動できるようにする
 (define-key dired-mode-map (kbd "C-t") 'nil)
