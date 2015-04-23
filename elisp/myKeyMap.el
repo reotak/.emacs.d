@@ -29,11 +29,13 @@
 
 ;;;; ツールの起動系  ;;;;;
 
-;; C-c yでanything-show-kill-ringを起動
-(define-key global-map (kbd "C-c y") 'anything-show-kill-ring)
+;; C-c kでanything-show-kill-ringを起動
+(define-key global-map (kbd "C-c k") 'anything-show-kill-ring)
+(define-key global-map (kbd "C-c C-k") 'anything-show-kill-ring)
 
 ;; C-c fでanything-for-filesを起動
 (define-key global-map (kbd "C-c f") 'anything-for-files)
+(define-key global-map (kbd "C-c C-f") 'anything-for-files)
 
 ;; C-c sでshellを起動
 (define-key global-map (kbd "C-c s") 'shell)
@@ -44,6 +46,7 @@
 ;; C-c aでauto-complete
 ;;(define-key ac-mode-map (kbd "C-c a") 'auto-complete)
 
+;; C-; でanything
 (define-key global-map (kbd "C-;") 'anything)
 
 ;; M-o oにoccur-by-moccurを割り当て
