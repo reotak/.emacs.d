@@ -26,6 +26,9 @@
 (define-key global-map (kbd "C-i") 'indent-region)
 (define-key global-map (kbd "C-M-_") 'indent-region)
 
+;; C-c C-c ‚Écompile‚ğŠ„‚è“–‚Ä‚é
+(global-set-key (kbd "C-c C-c") 'compile)
+
 
 ;;;; ƒc[ƒ‹‚Ì‹N“®Œn  ;;;;;
 
