@@ -6,3 +6,13 @@
 ;; homebrewのPATH
 (add-to-list 'exec-path (expand-file-name "~/homebrew/bin"))
 
+
+
+		
+		
+
+
+
+
+
+

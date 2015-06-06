@@ -119,6 +119,8 @@ and source-file directory for your debugger." t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;; 現在のディレクトリ名を出力するコマンド
+(global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert buffer-file-name)))
 
 
 
