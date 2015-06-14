@@ -92,6 +92,7 @@ and source-file directory for your debugger." t)
 (define-key ruby-mode-map (kbd "C-c C-c") 'smart-compile)
 
 
+<<<<<<< HEAD
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; go-modeを有効にする
@@ -125,6 +126,13 @@ and source-file directory for your debugger." t)
             (setq c-basic-offset 4)      ;; indent は 2 スペース
             ))
 (require 'srefactor)
+=======
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; 現在のディレクトリ名を出力するコマンド
+(global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert buffer-file-name)))
+
+>>>>>>> b14885ec4cc5b5a2ab4dc00a30f73dcf9470a5d6
 
 
 ;;; 以下、自動で設定されたもの

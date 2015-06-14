@@ -28,6 +28,10 @@
 ;; C-c C-c にcompileを割り当てる
 (global-set-key (kbd "C-c C-c") 'compile)
 
+;; M-,やC-,でタグを戻れるようにする
+(global-set-key (kbd "M-,") 'pop-tag-mark)
+(global-set-key (kbd "C-,") 'pop-tag-mark)
+
 
 ;;;; ツールの起動系  ;;;;;
 
