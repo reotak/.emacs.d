@@ -1,29 +1,29 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; G‘½‚Èİ’è
-;; ‚¨‚Ü‚¶‚È‚¢
+;;; é›‘å¤šãªè¨­å®š
+;; ãŠã¾ã˜ãªã„
 (require 'cl)
-;; Emacs‚©‚ç‚Ì¿–â‚ğy/n‚Å‰ñ“š‚·‚é
+;; Emacsã‹ã‚‰ã®è³ªå•ã‚’y/nã§å›ç­”ã™ã‚‹
 (fset 'yes-or-no-p 'y-or-n-p)
-;; ƒXƒ^[ƒgƒAƒbƒvƒƒbƒZ[ƒW‚ğ”ñ•\¦
+;; ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’éè¡¨ç¤º
 (setq inhibit-startup-screen t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ƒr[ƒv‰¹‚ğÁ‚·
+;; ãƒ“ãƒ¼ãƒ—éŸ³ã‚’æ¶ˆã™
 (setq ring-bell-function 'ignore)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; CUAƒ‚[ƒh‚É‚·‚é‚ªAƒL[ƒoƒCƒ“ƒh‚Í•Ï‚¦‚È‚¢i‹éŒ`•ÒW‚Ì‚½‚ßj
-;; ‹éŒ`ƒ‚[ƒh‚ÍC-SPC C-RET ‚ÅƒXƒ^[ƒg
-(cua-mode t) ; cua-mode‚ğƒIƒ“
-(setq cua-enable-cua-keys nil) ; CUAƒL[ƒoƒCƒ“ƒh‚Í–³Œø
+;;; CUAãƒ¢ãƒ¼ãƒ‰ã«ã™ã‚‹ãŒã€ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã¯å¤‰ãˆãªã„ï¼ˆçŸ©å½¢ç·¨é›†ã®ãŸã‚ï¼‰
+;; çŸ©å½¢ãƒ¢ãƒ¼ãƒ‰ã¯C-SPC C-RET ã§ã‚¹ã‚¿ãƒ¼ãƒˆ
+(cua-mode t) ; cua-modeã‚’ã‚ªãƒ³
+(setq cua-enable-cua-keys nil) ; CUAã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã¯ç„¡åŠ¹
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; “±“üÏ‚İƒc[ƒ‹‚ÉŠÖ‚·‚éİ’è‚Ìƒ[ƒh
+;;; å°å…¥æ¸ˆã¿ãƒ„ãƒ¼ãƒ«ã«é–¢ã™ã‚‹è¨­å®šã®ãƒ­ãƒ¼ãƒ‰
 
 
 ;; auto-complete
@@ -32,9 +32,9 @@
 (global-auto-complete-mode t)
 
 
-;; anything‚ÉŠÖ‚·‚éİ’è
+;; anythingã«é–¢ã™ã‚‹è¨­å®š
 (load "myAnything")
-;; anything-c-moccur‚ÉŠÖ‚·‚éİ’è
+;; anything-c-moccurã«é–¢ã™ã‚‹è¨­å®š
 (load "myAnything-c-moccur")
 ;; color-moccur
 (load "myColor-moccur")
@@ -60,7 +60,7 @@ and source-file directory for your debugger." t)
 (require 'ruby-electric)
 (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
 (let ((rel (assq 'ruby-electric-mode minor-mode-map-alist)))
-  (setq minor-mode-map-alist (append (delete rel minor-mode-map-alist) (list rel))))
+ minor-mode-map-alist (append (delete rel minor-mode-map-alist) (list rel))))
 (setq ruby-electric-expand-delimiters-list nil)
 
 (setq ruby-indent-level 2)
@@ -74,18 +74,21 @@ and source-file directory for your debugger." t)
 ;; (add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
 ;; (setq ruby-block-highlight-toggle t)
 
-;; compile‚ğŠÈ’P‚É‚·‚é
+;; compileã‚’ç°¡å˜ã«ã™ã‚‹
 (require 'smart-compile)
-;; ƒL[ƒ{[ƒh‚ÉŠ„‚è“–‚Ä
+;; ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã«å‰²ã‚Šå½“ã¦
 (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
 (define-key ruby-mode-map (kbd "C-c C-c") 'smart-compile)
 
+
+<<<<<<< HEAD
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; go-mode‚ğ—LŒø‚É‚·‚é
+;; go-modeã‚’æœ‰åŠ¹ã«ã™ã‚‹
 (require 'go-mode)
 ;;(require 'go-mode-load)
 
-;; go‚Ìİ’è
+;; goã®è¨­å®š
 (setq gofmt-command "goimports")
 (add-hook 'before-save-hook 'gofmt-before-save)
 (add-hook 'go-mode-hook '(lambda () (setq tab-width 2)))
@@ -104,22 +107,24 @@ and source-file directory for your debugger." t)
 
 (require 'cc-mode)
  
-;; c-mode-common-hook ‚Í C/C++ ‚Ìİ’è
+;; c-mode-common-hook ã¯ C/C++ ã®è¨­å®š
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (setq c-default-style "k&r") ;; ƒJ[ƒjƒnƒ“EƒŠƒbƒ`[ƒXƒ^ƒCƒ‹
-            (setq indent-tabs-mode t)  ;; ƒ^ƒu‚Í—˜—p‚µ‚È‚¢
-            (setq c-basic-offset 4)      ;; indent ‚Í 2 ƒXƒy[ƒX
+            (setq c-default-style "k&r") ;; ã‚«ãƒ¼ãƒ‹ãƒãƒ³ãƒ»ãƒªãƒƒãƒãƒ¼ã‚¹ã‚¿ã‚¤ãƒ«
+            (setq indent-tabs-mode t)  ;; ã‚¿ãƒ–ã¯åˆ©ç”¨ã—ãªã„
+            (setq c-basic-offset 4)      ;; indent ã¯ 2 ã‚¹ãƒšãƒ¼ã‚¹
             ))
 (require 'srefactor)
-
+=======
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ–¼‚ğo—Í‚·‚éƒRƒ}ƒ“ƒh
+;;; ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã‚’å‡ºåŠ›ã™ã‚‹ã‚³ãƒãƒ³ãƒ‰
 (global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert buffer-file-name)))
 
+>>>>>>> b14885ec4cc5b5a2ab4dc00a30f73dcf9470a5d6
 
-;;; ˆÈ‰ºA©“®‚Åİ’è‚³‚ê‚½‚à‚Ì
+
+;;; ä»¥ä¸‹ã€è‡ªå‹•ã§è¨­å®šã•ã‚ŒãŸã‚‚ã®
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -135,13 +140,13 @@ and source-file directory for your debugger." t)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ŒÂl“I‚Èİ’è‚Ìƒ[ƒh
-;; ©•ª‚Åİ’è‚µ‚½ƒL[ƒ}ƒbƒv‚ğ“Ç‚İ‚Ş
+;; å€‹äººçš„ãªè¨­å®šã®ãƒ­ãƒ¼ãƒ‰
+;; è‡ªåˆ†ã§è¨­å®šã—ãŸã‚­ãƒ¼ãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€
 (load "myKeyMap")
-;; ©•ª‚Åİ’è‚µ‚½‰æ–Ê‚Ìİ’è‚ğ“Ç‚İ‚Ş
+;; è‡ªåˆ†ã§è¨­å®šã—ãŸç”»é¢ã®è¨­å®šã‚’èª­ã¿è¾¼ã‚€
 (load "myFrame")
-;; ©•ª‚Åİ’è‚µ‚½ƒoƒbƒNƒAƒbƒv‚ÉŠÖ‚·‚éİ’è‚ğ“Ç‚İ‚Ş
+;; è‡ªåˆ†ã§è¨­å®šã—ãŸãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã«é–¢ã™ã‚‹è¨­å®šã‚’èª­ã¿è¾¼ã‚€
 (load "myBackup")
-;; ©•ª‚Åİ’è‚µ‚½ƒ‚[ƒh‚ÉŠÖ‚·‚éİ’è‚ğ“Ç‚İ‚Ş
+;; è‡ªåˆ†ã§è¨­å®šã—ãŸãƒ¢ãƒ¼ãƒ‰ã«é–¢ã™ã‚‹è¨­å®šã‚’èª­ã¿è¾¼ã‚€
 (load "myMode")
 
