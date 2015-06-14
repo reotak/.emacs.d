@@ -1,0 +1,15 @@
+* grep
+  $ Select-String "hogehoge" hoge.txt
+  $ Select-String -Path .\foo.txt -Pattern "bar"
+
+  çƒãNìIÇ…Ç‚ÇÈÇ…ÇÕÅA
+  $ Get-ChildItem . -include *.txt -Recurse -Force | Select-String "hoge" -Encoding default
+
+* find -name hogehgoe
+  $ ls -r | where { $_.Name -match "hogehoge" }
+
+* curl
+  $ Invoke-ResetMethod -Uri "http://google.co.jp"
+  $ Invoke-RestMethod -Uri "http://localhost:1234/poshcomplete/" -Method POST -Body "text=test"
+
+

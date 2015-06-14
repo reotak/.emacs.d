@@ -1,3 +1,9 @@
+;;;; for golang ;;;;;
+;; シェルのパス設定を受け取る
+(require 'exec-path-from-shell)
+(let ((envs `("PATH" "GOPATH")))
+   (exec-path-from-shell-copy-envs envs))
+
 ;フォント設定
 (set-frame-font "ricty-12")
 

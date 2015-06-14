@@ -92,12 +92,6 @@ and source-file directory for your debugger." t)
 (define-key ruby-mode-map (kbd "C-c C-c") 'smart-compile)
 
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; シェルのパス設定を受け取る
-(require 'exec-path-from-shell)
-
-(let ((envs `("PATH" "GOPATH")))
-  (exec-path-from-shell-copy-envs envs))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; go-modeを有効にする
@@ -119,7 +113,18 @@ and source-file directory for your debugger." t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; for C ;;
 
+(require 'cc-mode)
+ 
+;; c-mode-common-hook は C/C++ の設定
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (setq c-default-style "k&r") ;; カーニハン・リッチースタイル
+            (setq indent-tabs-mode t)  ;; タブは利用しない
+            (setq c-basic-offset 4)      ;; indent は 2 スペース
+            ))
+(require 'srefactor)
 
 
 ;;; 以下、自動で設定されたもの

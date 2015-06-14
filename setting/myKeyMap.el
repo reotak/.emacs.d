@@ -22,8 +22,7 @@
 ;; M-+にフォントの拡大を設定する
 (define-key global-map (kbd "M-+") 'text-scale-adjust)
 
-;; C-i,C-M-_にindent-regionを割り当てる
-(define-key global-map (kbd "C-i") 'indent-region)
+;; C-M-_にindent-regionを割り当てる
 (define-key global-map (kbd "C-M-_") 'indent-region)
 
 ;; C-c C-c にcompileを割り当てる
@@ -56,3 +55,15 @@
 (define-key global-map (kbd "M-o") 'occur-by-moccur)
 
 ;;;;; ここまでツールの起動系 ;;;;;
+
+
+;;;;;; mode固有 ;;;;;;
+
+;;; c-lang ;;;
+;; refactor
+(define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+(define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
+;; find-tag
+(define-key c-mode-map (kbd "C-,") 'find-tag)
+(define-key c++-mode-map (kbd "C-,") 'find-tag)
+
