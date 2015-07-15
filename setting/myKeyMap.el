@@ -16,6 +16,9 @@
 ;; C-x‚Éundo‚ðŠ„‚è“–‚Ä‚é
 (define-key global-map (kbd "C-z") 'undo)
 
+;; C-x C-k ‚Å‚àkill-buffer‚Å‚«‚é‚æ‚¤‚É‚·‚é
+(define-key global-map (kbd "C-x C-k") 'kill-buffer)
+
 ;; C-x C-x‚ÉM-x‚Æ“¯“™‚Ì‹@”\‚ðŠ„‚è“–‚Ä‚é
 (define-key global-map (kbd "C-x C-x") 'execute-extended-command)
 
@@ -68,6 +71,9 @@
 (define-key c-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 (define-key c++-mode-map (kbd "M-RET") 'srefactor-refactor-at-point)
 ;; find-tag
-(define-key c-mode-map (kbd "C-,") 'find-tag)
-(define-key c++-mode-map (kbd "C-,") 'find-tag)
+(define-key c-mode-map (kbd "C-.") 'find-tag)
+(define-key c++-mode-map (kbd "C-.") 'find-tag)
+(define-key c-mode-map (kbd "C-,") 'pop-tag-mark)
+(define-key c++-mode-map (kbd "C-,") 'pop-tag-mark)
+
 
