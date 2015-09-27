@@ -63,7 +63,6 @@
 
 ;;;;; ここまでツールの起動系 ;;;;;
 
-
 ;;;;;; mode固有 ;;;;;;
 
 ;;; c-lang ;;;
@@ -75,5 +74,11 @@
 (define-key c++-mode-map (kbd "C-.") 'find-tag)
 (define-key c-mode-map (kbd "C-,") 'pop-tag-mark)
 (define-key c++-mode-map (kbd "C-,") 'pop-tag-mark)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;; 現在のディレクトリ名を出力するコマンド
+(global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert buffer-file-name)))
 
 

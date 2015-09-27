@@ -21,6 +21,58 @@
 (setq cua-enable-cua-keys nil) ; CUAキーバインドは無効
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; 外観に関する設定
+
+;; カラーモードの設定
+(when (>= emacs-major-version 24)
+  (load-theme 'manoj-dark t)
+)
+
+;; tabや行末の空白の表示（whitespace）
+(require 'whitespace)
+(setq whitespace-style '(face           ; faceで可視化
+                         trailing       ; 行末
+                         tabs           ; タブ
+                         empty          ; 先頭/末尾の空行
+                         space-mark     ; 表示のマッピング
+                         tab-mark
+                         ))
+(setq whitespace-display-mappings
+      '((tab-mark ?\t [?\u00BB ?\t] [?\\ ?\t])))
+(global-whitespace-mode 1)
+
+;; tabなどの色の設定
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(whitespace-empty ((t (:background "burlywood4" :foreground "firebrick"))))
+ '(whitespace-newline ((t (:background "dark cyan" :foreground "darkgray" :weight normal))))
+ '(whitespace-tab ((t (:background "black" :foreground "darkgray"))))
+ '(whitespace-trailing ((t (:background "dark magenta" :foreground "dark cyan" :underline t :weight bold)))))
+
+
+;; 透明にする
+(if window-system (progn
+    (set-background-color "Black")
+    (set-foreground-color "LightGray")
+    (set-cursor-color "Gray")
+    (set-frame-parameter nil 'alpha 80) ;透明度
+    ))
+
+(defun set-alpha (alpha-num)
+  "set frame parameter 'alpha"
+  (interactive "nAlpha: ")
+  (set-frame-parameter nil 'alpha (cons alpha-num '(90))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; 導入済みツールに関する設定のロード
@@ -80,23 +132,23 @@ and source-file directory for your debugger." t)
 (define-key ruby-mode-map (kbd "C-c c") 'smart-compile)
 (define-key ruby-mode-map (kbd "C-c C-c") 'smart-compile)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; go-modeを有効にする
-(require 'go-mode)
-;;(require 'go-mode-load)
-
-;; goの設定
-(setq gofmt-command "goimports")
-(add-hook 'before-save-hook 'gofmt-before-save)
-(add-hook 'go-mode-hook '(lambda () (setq tab-width 2)))
-;; godef
-(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-.") 'godef-jump)))
-(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-.") 'godef-jump)))
-(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-,") 'pop-tag-mark)))
-(add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-,") 'pop-tag-mark)))
-
-;; gocode
-(require 'go-autocomplete)
+;; (require 'go-mode)
+;; ;;(require 'go-mode-load)
+;;  
+;; ;; goの設定
+;; (setq gofmt-command "goimports")
+;; (add-hook 'before-save-hook 'gofmt-before-save)
+;; (add-hook 'go-mode-hook '(lambda () (setq tab-width 2)))
+;; ;; godef
+;; (add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-.") 'godef-jump)))
+;; (add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-.") 'godef-jump)))
+;; (add-hook 'go-mode-hook (lambda () (local-set-key (kbd "M-,") 'pop-tag-mark)))
+;; (add-hook 'go-mode-hook (lambda () (local-set-key (kbd "C-,") 'pop-tag-mark)))
+;;  
+;; ;; gocode
+;; (require 'go-autocomplete)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -113,11 +165,8 @@ and source-file directory for your debugger." t)
             ))
 (require 'srefactor)
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;; 現在のディレクトリ名を出力するコマンド
-(global-set-key (kbd "C-c C-d") (lambda () (interactive) (insert buffer-file-name)))
-
 
 ;;; 以下、自動で設定されたもの
 (custom-set-variables
@@ -144,4 +193,3 @@ and source-file directory for your debugger." t)
 (load "myBackup")
 ;; 自分で設定したモードに関する設定を読み込む
 (load "myMode")
-
